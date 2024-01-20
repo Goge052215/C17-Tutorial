@@ -1,0 +1,5 @@
+/Users/goge/CLionProjects/C_tutorial/build/CMakeFiles/C_tutorial.dir
+/Users/goge/CLionProjects/C_tutorial/build/CMakeFiles/1.2_Variables.dir
+/Users/goge/CLionProjects/C_tutorial/build/CMakeFiles/1.3_printf.dir
+/Users/goge/CLionProjects/C_tutorial/build/CMakeFiles/edit_cache.dir
+/Users/goge/CLionProjects/C_tutorial/build/CMakeFiles/rebuild_cache.dir
