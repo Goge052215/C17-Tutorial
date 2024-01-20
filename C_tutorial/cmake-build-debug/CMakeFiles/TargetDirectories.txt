@@ -1,0 +1,9 @@
+/Users/goge/CLionProjects/C_tutorial/cmake-build-debug/CMakeFiles/C_tutorial.dir
+/Users/goge/CLionProjects/C_tutorial/cmake-build-debug/CMakeFiles/1.2_Variables.dir
+/Users/goge/CLionProjects/C_tutorial/cmake-build-debug/CMakeFiles/1.3_printf.dir
+/Users/goge/CLionProjects/C_tutorial/cmake-build-debug/CMakeFiles/2.1_arithmetic.dir
+/Users/goge/CLionProjects/C_tutorial/cmake-build-debug/CMakeFiles/2.2_statements.dir
+/Users/goge/CLionProjects/C_tutorial/cmake-build-debug/CMakeFiles/2.3_loops.dir
+/Users/goge/CLionProjects/C_tutorial/cmake-build-debug/CMakeFiles/3.1_integers.dir
+/Users/goge/CLionProjects/C_tutorial/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/goge/CLionProjects/C_tutorial/cmake-build-debug/CMakeFiles/rebuild_cache.dir

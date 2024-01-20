@@ -1,0 +1,20 @@
+[
+{
+  "directory": "/Users/goge/CLionProjects/C_tutorial/build",
+  "command": "/opt/homebrew/bin/aarch64-apple-darwin22-gcc-13 -g -std=gnu11 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.0.sdk -o CMakeFiles/C_tutorial.dir/1.1_Helloworld.c.o -c /Users/goge/CLionProjects/C_tutorial/1.1_Helloworld.c",
+  "file": "/Users/goge/CLionProjects/C_tutorial/1.1_Helloworld.c",
+  "output": "CMakeFiles/C_tutorial.dir/1.1_Helloworld.c.o"
+},
+{
+  "directory": "/Users/goge/CLionProjects/C_tutorial/build",
+  "command": "/opt/homebrew/bin/aarch64-apple-darwin22-gcc-13 -g -std=gnu11 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.0.sdk -o CMakeFiles/1.2_Variables.dir/1.2_Variables.c.o -c /Users/goge/CLionProjects/C_tutorial/1.2_Variables.c",
+  "file": "/Users/goge/CLionProjects/C_tutorial/1.2_Variables.c",
+  "output": "CMakeFiles/1.2_Variables.dir/1.2_Variables.c.o"
+},
+{
+  "directory": "/Users/goge/CLionProjects/C_tutorial/build",
+  "command": "/opt/homebrew/bin/aarch64-apple-darwin22-gcc-13 -g -std=gnu11 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.0.sdk -o CMakeFiles/1.3_printf.dir/1.3_printf.c.o -c /Users/goge/CLionProjects/C_tutorial/1.3_printf.c",
+  "file": "/Users/goge/CLionProjects/C_tutorial/1.3_printf.c",
+  "output": "CMakeFiles/1.3_printf.dir/1.3_printf.c.o"
+}
+]
