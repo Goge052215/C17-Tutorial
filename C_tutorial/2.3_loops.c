@@ -389,5 +389,6 @@ int main(void) {
     uni_reversal();
     even_square_num();
     calendar();
+    e_calc();
     return 0;
 }
