@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <math.h>
 #include <ctype.h>
 #include <stdlib.h>
 
@@ -207,11 +208,62 @@ void convert_card() {
     printf("Scrabble value: %d", total);
 }
 
+void word_avg_length() {
+    char ch;
+    int avg_length;
+    int len = 0;
+    int word = 0; // Initialize word count to 0
+
+    printf("Enter a sentence: ");
+    ch = getchar();
+
+    while (ch != '\n') {
+        if (ch != ' ') {
+            len++; // Increment length only if ch is not a space
+        }
+
+        if (ch == ' ' && getchar() != ' ') {
+            word++; // Increment word count only when a space is followed by a non-space character
+        }
+        ch = getchar(); // Read the next character
+    }
+
+    word++; // Increment for the last word
+
+    if (word > 0) { // Check to avoid division by zero
+        avg_length = len / word;
+        printf("Average word length: %d\n", avg_length);
+    } else {
+        printf("No words entered.\n");
+    }
+}
+
+void newton_method_root() {
+    /* This program helps determine the square root of 3 by using the Newton method */
+    double x = 3.0; // Assuming you want to find the square root of 3
+    double y = 1.0; // Initial guess
+    double frac, frac_avg;
+    const double tolerance = 0.000001; // Tolerance for convergence
+
+    do {
+        frac = x / y;
+        frac_avg = (frac + y) / 2;
+        if (fabs(y - frac_avg) < tolerance) { // Check if the difference is within the tolerance
+            break;
+        }
+        y = frac_avg;
+    } while (1);
+
+    printf("The square root of 3 is: %lf\n", y);
+}
+
 int main(void) {
     sum();
     char_type();
     square2();
     convert_tel_number();
     convert_card();
+    word_avg_length();
+    newton_method_root();
     return 0;
 }
