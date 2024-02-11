@@ -130,10 +130,123 @@ void deal() {
     printf("\n");
 }
 
+void reverse2() {
+    /* This is an improved version of reversing the digit order you entered */
+    int i, n;
+
+    printf("How many numbers do you want to reverse: ");
+    scanf("%d", &n);
+
+    int a[n];
+    printf("Enter %d numbers: ", n);
+    for (i = 0; i < n; i++) {
+        scanf("%d", &a[i]);
+    }
+    printf("In reverse order: ");
+    for (i = n - 1; i >= 0; i--) {
+        printf("%d", a[i]);
+    }
+
+    printf("\n");
+}
+
+void repdigit2() {
+    /* This is an improved version of checking repeating digit */
+    bool digit_seen[10] = {false};
+    int digit, i;
+    long n;
+
+    printf("Enter a number: ");
+    scanf("%ld", &n);
+
+    n = labs(n); // Handle negative numbers
+    i = 0; // Initialize an indicator
+
+    while (n > 0) {
+        digit = n % 10;
+        if (digit_seen[digit]) {
+            printf("The repeated digit: %d\n", digit);
+            i++; // The indicator +1 after every repeated digit appears;
+        }
+        digit_seen[digit] = true;
+        n /= 10;
+    }
+
+    if (i > 0) {
+        // If the indicator is greater than 0, a repeated digit was found.
+        printf("Repeated digit\n");
+        printf("Exiting indicator value: %d\n", i);
+    } else {
+        // If the indicator is not greater than 0, all digits were unique.
+        printf("No repeated digit\n");
+    }
+}
+
+void repdigit3() {
+    /* V3.0!! */
+    bool digit_seen[10] = {false};
+    int digit_count[10] = {0}; // Array to count occurrences of each digit
+    int digit;
+    long n;
+
+    printf("Enter a number: ");
+    scanf("%ld", &n);
+
+    n = labs(n); // Ensure n is positive
+
+    while (n > 0) {
+        digit = n % 10;
+        if (!digit_seen[digit]) {
+            digit_seen[digit] = true; // Mark digit as seen
+        }
+        digit_count[digit]++; // Increment the count for this digit
+        n /= 10;
+    }
+
+    printf("Digit occurrences:\n");
+    for (int i = 0; i < 10; i++) {
+        if (digit_count[i] > 0) {
+            printf("Digit %d: %d time(s)\n", i, digit_count[i]);
+        }
+    }
+}
+
+void repdigit4() {
+    for (;;) { // Infinite loop
+        bool digit_seen[10] = {false}; // Reset digit_seen for each new number
+        int digit;
+        long n;
+
+        printf("Enter a number: ");
+        scanf("%ld", &n);
+
+        if (n < 0) {
+            exit(0); // Exit the program if a negative number is entered
+        }
+
+        while (n > 0) {
+            digit = n % 10;
+            if (digit_seen[digit]) {
+                printf("Repeated digit\n");
+                break; // Exit the inner loop if a repeated digit is found
+            }
+            digit_seen[digit] = true;
+            n /= 10;
+        }
+
+        if (n == 0) {
+            printf("No repeated digit\n"); // Print this if the loop completes without finding a repeated digit
+        }
+    }
+}
+
 int main(void) {
     reverse();
     repdigit();
     interest();
     deal();
+    reverse2();
+    repdigit2();
+    repdigit3();
     return 0;
 }
