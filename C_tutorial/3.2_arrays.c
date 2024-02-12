@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <time.h>
+#include <ctype.h>
 #include <stdbool.h>
 
 #define N 10
@@ -162,7 +163,7 @@ void repdigit2() {
     n = labs(n); // Handle negative numbers
     i = 0; // Initialize an indicator
 
-    while (n > 0) {
+    while (n != 0) {
         digit = n % 10;
         if (digit_seen[digit]) {
             printf("The repeated digit: %d\n", digit);
@@ -185,8 +186,9 @@ void repdigit2() {
 void repdigit3() {
     /* V3.0!! */
     bool digit_seen[10] = {false};
+    int digit_display[10] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
     int digit_count[10] = {0}; // Array to count occurrences of each digit
-    int digit;
+    int digit, i;
     long n;
 
     printf("Enter a number: ");
@@ -194,20 +196,20 @@ void repdigit3() {
 
     n = labs(n); // Ensure n is positive
 
-    while (n > 0) {
+    while (n != 0) {
         digit = n % 10;
-        if (!digit_seen[digit]) {
-            digit_seen[digit] = true; // Mark digit as seen
-        }
-        digit_count[digit]++; // Increment the count for this digit
+        digit_count[digit]++; // Increment count for every occurrence
+        digit_seen[digit] = true; // Mark digit as seen
         n /= 10;
     }
 
-    printf("Digit occurrences:\n");
-    for (int i = 0; i < 10; i++) {
-        if (digit_count[i] > 0) {
-            printf("Digit %d: %d time(s)\n", i, digit_count[i]);
-        }
+    printf("Digit:     ");
+    for (i = 0; i < 10; i++) {
+        printf(" %d", digit_display[i]); // Added space for readability
+    }
+    printf("\nOccurrence:"); // Fixed typo and added newline for formatting
+    for (i = 0; i < 10; i++) {
+        printf(" %d", digit_count[i]); // Added space for readability
     }
 }
 
@@ -221,7 +223,7 @@ void repdigit4() {
         scanf("%ld", &n);
 
         if (n < 0) {
-            exit(0); // Exit the program if a negative number is entered
+            exit(-1); // Exit the program if a negative number is entered
         }
 
         while (n > 0) {
@@ -240,6 +242,58 @@ void repdigit4() {
     }
 }
 
+void reverse_mod() {
+    /* This program helps calculate the length of the array */
+    int a[N], i;
+    printf("Enter %d numbers: ", N);
+
+    for (i = 0; i < N; i++) {
+        scanf("%d", &a[i]); // Read and store each number in the array
+    }
+
+    printf("In reverse order: ");
+    for (i = N - 1; i >= 0; i--) {
+        printf("%d ", a[i]); // Print each number in reverse order
+    }
+
+    printf("The size of array: %llu", sizeof(a) / sizeof(a[0]));
+    printf("\n");
+}
+
+// Function to apply the B1FF filter to a user-entered message
+void b1ff_filter_system() {
+    int i; // Loop counter
+    char origin_sentence[100]; // Array to store the original sentence
+    printf("Enter message: ");
+
+    // Loop to read characters one by one
+    for (i = 0; i < 100; i++) {
+        scanf("%c", &origin_sentence[i]); // Reads a single character from input
+        if (origin_sentence[i] == '\n') { // Checks if the character is a newline
+            origin_sentence[i] = '\0'; // Replaces newline with null character to end the string
+            break; // Exits the loop if newline is found
+        }
+        origin_sentence[i] = toupper(origin_sentence[i]); // Converts character to uppercase
+        // The following conditions check for specific characters to replace
+        if (origin_sentence[i] == 'A') {
+            origin_sentence[i] = '4'; // Replaces 'A' with '4'
+        } else if (origin_sentence[i] == 'B') {
+            origin_sentence[i] = '8'; // Replaces 'B' with '8'
+        } else if (origin_sentence[i] == 'E') {
+            origin_sentence[i] = '3'; // Replaces 'E' with '3'
+        } else if (origin_sentence[i] == 'O') {
+            origin_sentence[i] = '0'; // Replaces 'O' with '0'
+        }
+    }
+
+    printf("In B1ff speak: ");
+    // Loop to print the modified sentence character by character
+    for (int n = 0; n < i; n++) { // Iterates over each character in the modified sentence
+        printf("%c", origin_sentence[n]); // Prints the current character
+    }
+    printf(" !!!!!!!!!!\n"); // Prints a series of exclamation marks at the end
+}
+
 int main(void) {
     reverse();
     repdigit();
@@ -248,5 +302,8 @@ int main(void) {
     reverse2();
     repdigit2();
     repdigit3();
+    repdigit4();
+    reverse_mod();
+    b1ff_filter_system();
     return 0;
 }
