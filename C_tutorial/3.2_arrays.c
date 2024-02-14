@@ -294,6 +294,128 @@ void b1ff_filter_system() {
     printf(" !!!!!!!!!!\n"); // Prints a series of exclamation marks at the end
 }
 
+// Function to calculate the sum of each row and column in a 5x5 matrix
+void sum_row_total() {
+    int i;
+    // Declare arrays to store individual row values
+    int row_1[5], row_2[5], row_3[5], row_4[5], row_5[5];
+    // Initialize arrays to store the sum of rows and columns
+    int sum_row[5] = {0}, sum_column[5] = {0};
+
+    // Loop to read and sum values for row 1
+    for (i = 0; i < 5; i++) {
+        printf("Enter row 1: ");
+        scanf("%d", &row_1[i]);
+        sum_row[0] += row_1[i]; // Add current element to row 1 sum
+    }
+    // Repeat the process for rows 2 to 5
+    for (i = 0; i < 5; i++) {
+        printf("Enter row 2: ");
+        scanf("%d", &row_2[i]);
+        sum_row[1] += row_2[i];
+    }
+    for (i = 0; i < 5; i++) {
+        printf("Enter row 3: ");
+        scanf("%d", &row_3[i]);
+        sum_row[2] += row_3[i];
+    }
+    for (i = 0; i < 5; i++) {
+        printf("Enter row 4: ");
+        scanf("%d", &row_4[i]);
+        sum_row[3] += row_4[i];
+    }
+    for (i = 0; i < 5; i++) {
+        printf("Enter row 5: ");
+        scanf("%d", &row_5[i]);
+        sum_row[4] += row_5[i];
+    }
+
+    // Calculate the sum of each column
+    for(i = 0; i < 5; i++) {
+        sum_column[i] = row_1[i] + row_2[i] + row_3[i] + row_4[i] + row_5[i];
+    }
+
+    // Print the total sum of each row
+    printf("The Row Totals: ");
+    for (i = 0; i < 5; i++) {
+        printf("%d ", sum_row[i]);
+    }
+    printf("\n");
+
+    // Print the total sum of each column
+    printf("The Column Totals: ");
+    for (i = 0; i < 5; i++) {
+        printf("%d ", sum_column[i]);
+    }
+    printf("\n");
+}
+
+void sum_row_total_mod() {
+    int i;
+    int math[5], English[5], physics[5], chemistry[5], economics[5];
+    int sum_row[5] = {0}, sum_column[5] = {0};
+    float average_subjects[5] = {0}, average_students[5] = {0};
+
+    for (i = 0; i < 5; i++) {
+        printf("Enter 5 students' math score: ");
+        scanf("%d", &math[i]);
+        sum_row[0] += math[i];
+    }
+    for (i = 0; i < 5; i++) {
+        printf("Enter 5 students' English score: ");
+        scanf("%d", &English[i]);
+        sum_row[1] += English[i];
+    }
+    for (i = 0; i < 5; i++) {
+        printf("Enter 5 students' physics score: ");
+        scanf("%d", &physics[i]);
+        sum_row[2] += physics[i];
+    }
+    for (i = 0; i < 5; i++) {
+        printf("Enter 5 students' chemistry score: ");
+        scanf("%d", &chemistry[i]);
+        sum_row[3] += chemistry[i];
+    }
+    for (i = 0; i < 5; i++) {
+        printf("Enter 5 students' economics score: ");
+        scanf("%d", &economics[i]);
+        sum_row[4] += economics[i];
+    }
+
+    for (i = 0; i < 5; i++) {
+        sum_column[i] = math[i] + English[i] + physics[i] + chemistry[i] + economics[i];
+    }
+
+    for (i = 0; i < 5; i++) {
+        average_subjects[i] = sum_row[i] / 5.0; // Use float division
+        average_students[i] = sum_column[i] / 5.0; // Use float division
+    }
+
+    printf("The 5 subjects total scores (MATH, Eng, PHY, CHEM, ECON): ");
+    for (i = 0; i < 5; i++) {
+        printf("%d ", sum_row[i]);
+    }
+    printf("\n");
+
+    printf("The 5 students' total scores: ");
+    for (i = 0; i < 5; i++) {
+        printf("%d ", sum_column[i]);
+    }
+    printf("\n");
+
+    printf("Average 5 subjects score (MATH, Eng, PHY, CHEM, ECON): ");
+    for (i = 0; i < 5; i++) {
+        printf("%.2f ", average_subjects[i]); // Print with 2 decimal places
+    }
+    printf("\n");
+
+    printf("Average 5 students' score: ");
+    for (i = 0; i < 5; i++) {
+        printf("%.2f ", average_students[i]); // Print with 2 decimal places
+    }
+    printf("\n");
+}
+
 int main(void) {
     reverse();
     repdigit();
@@ -305,5 +427,6 @@ int main(void) {
     repdigit4();
     reverse_mod();
     b1ff_filter_system();
+    sum_row_total();
     return 0;
 }
