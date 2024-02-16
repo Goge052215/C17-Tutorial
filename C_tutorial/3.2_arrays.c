@@ -1,3 +1,4 @@
+// Including necessary libraries
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -416,6 +417,136 @@ void sum_row_total_mod() {
     printf("\n");
 }
 
+// Function to check if all four positions around the current one are occupied
+bool allPositionsOccupied(int i, int j, char board[10][10]) {
+    // Check if the position above is occupied or out of bounds
+    bool up = (i == 0) || (board[i - 1][j] != '.');
+    // Check if the position below is occupied or out of bounds
+    bool down = (i == 9) || (board[i + 1][j] != '.');
+    // Check if the position to the left is occupied or out of bounds
+    bool left = (j == 0) || (board[i][j - 1] != '.');
+    // Check if the position to the right is occupied or out of bounds
+    bool right = (j == 9) || (board[i][j + 1] != '.');
+
+    // If all directions are either out of bounds or occupied, return true
+    return up && down && left && right;
+}
+
+void steps() {
+    // Initialize the board with '.' to indicate empty spaces
+    char board[10][10];
+    for (int x = 0; x < 10; x++) {
+        for (int y = 0; y < 10; y++) {
+            board[x][y] = '.';
+        }
+    }
+
+    // Define an array of alphabet letters to place on the board
+    char alphabet[26] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
+                         'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S',
+                         'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
+    int i, j, rand_num_mod, a;
+
+    // Initialize random seed
+    srand(time(NULL));
+    // Randomly select the starting position
+    i = rand() % 10;
+    j = rand() % 10;
+
+    // Place 'A' at the starting position
+    board[i][j] = 'A';
+
+    for (a = 1; a < 26; a++) {
+        // Before placing the next letter, check if all adjacent positions are occupied
+        if (allPositionsOccupied(i, j, board)) {
+            // If all positions around are occupied, print message and terminate
+            printf("All positions around (%d, %d) are occupied. Terminating.\n", i, j);
+            exit(0);
+        }
+
+        // Randomly choose a direction for the next letter
+        rand_num_mod = rand() % 4;
+
+        // Based on the chosen direction, place the next letter if possible
+        switch (rand_num_mod) {
+            case 0: if (i > 0) board[--i][j] = alphabet[a]; break; // Move up if not at the top edge
+            case 1: if (i < 9) board[++i][j] = alphabet[a]; break; // Move down if not at the bottom edge
+            case 2: if (j > 0) board[i][--j] = alphabet[a]; break; // Move left if not at the left edge
+            case 3: if (j < 9) board[i][++j] = alphabet[a]; break; // Move right if not at the right edge
+            default: printf("error!\n"); exit(-1); // Handle unexpected case
+        }
+    }
+}
+
+void flight_match() {
+    int departure[8] = {480, 583, 679, 767, 840, 945, 1140, 1305};
+    int arrival[8] = {616, 712, 811, 900, 968, 1075, 1280, 1438};
+    int hr_enter, min_enter, hr_arrive, min_arrive, hr_depart, min_depart, time, i;
+
+    printf("Enter your departure time (24hr, hr:min)");
+    scanf("%d:%d", &hr_enter, &min_enter);
+
+    time = hr_enter * 60 + min_enter;
+
+    for(i = 0; i < 8; i++) {
+        if (time < departure[i]){
+            min_depart = departure[i] % 60;
+            min_arrive = arrival[i] % 60;
+            hr_depart = departure[i] / 60;
+            hr_arrive = arrival[i] / 60;
+
+            printf("Your departure time: %02d:%02d\n", hr_depart, min_depart);
+            printf("Your arrival time: %02d:%02d\n", hr_arrive, min_arrive);
+            break;
+        }
+
+        if (time >= departure[7]) {
+            min_depart = departure[0] % 60;
+            min_arrive = arrival[0] % 60;
+            hr_depart = departure[0] / 60;
+            hr_arrive = arrival[0] / 60;
+
+            printf("Your departure time: %02d:%02d\n", hr_depart, min_depart);
+            printf("Your arrival time: %02d:%02d\n", hr_arrive, min_arrive);
+            break;
+        }
+    }
+
+    printf("\n");
+}
+
+// Define a function to encrypt a message using the Caesar cipher method.
+void Julius_Caesar_code() {
+#define MAX_SIZE 1000 // Define a constant for the maximum size of the message to be encrypted.
+
+    int i, shifter; // shifter - to store the number of positions each letter should be shifted
+    unsigned char message[MAX_SIZE];
+    // Declare an array to store the message, using unsigned char to accommodate extended ASCII characters if needed.
+
+    printf("Enter the message to be encrypted: ");
+    // Use fgets to read the message from standard input, including spaces, until a newline or EOF is encountered.
+    fgets(message, MAX_SIZE, stdin);
+
+    // Prompt the user to enter the number of positions to shift the letters by.
+    printf("Enter shift amount (1-25): ");
+    scanf("%d", &shifter);
+
+    // Print the encrypted message.
+    printf("Encrypted message: ");
+    // Iterate over each character in the message until the null terminator is encountered.
+    for (i = 0; message[i] != '\0'; i++) {
+        if (message[i] >= 'a' && message[i] <= 'z') { // Check if the current character is a lowercase letter.
+            printf("%c", ((message[i] - 'a' + shifter) % 26) + 'a');
+        }
+        else if (message[i] >= 'A' && message[i] <= 'Z') { // Check if the current character is an uppercase letter.
+            printf("%c", ((message[i] - 'A' + shifter) % 26) + 'A');
+        }
+        else { // If the current character is neither a lowercase nor an uppercase letter,
+            printf("%c", message[i]);
+        }
+    }
+}
+
 int main(void) {
     reverse();
     repdigit();
@@ -428,5 +559,7 @@ int main(void) {
     reverse_mod();
     b1ff_filter_system();
     sum_row_total();
+    steps();
+    Julius_Caesar_code();
     return 0;
 }
