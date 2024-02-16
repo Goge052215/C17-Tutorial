@@ -20,39 +20,6 @@ To get started with the tutorials and exercises in this repository, you'll need:
 4. **Try It Yourself**: After understanding the example, try to modify the code or solve the exercises on your own.
 5. **Compile and Run**: Use your C compiler to compile the programs and run them to see the results.
 
-## Example: Caesar Cipher
-
-One of the practical code questions included in this repository is the implementation of the Caesar Cipher - a simple encryption technique. Here's a brief overview of how it works:
-
-`void Julius_Caesar_code() {
-    #define MAX_SIZE 1000
-    
-    int i, shifter; // Loop counter and shift amount.
-    unsigned char message[MAX_SIZE]; // Array to hold the input message.
-
-    // Ask for and read the message to encrypt.
-    printf("Enter the message to be encrypted: ");
-    fgets(message, MAX_SIZE, stdin);
-
-    // Ask for and read the number of positions to shift.
-    printf("Enter shift amount: ");
-    scanf("%d", &shifter);
-    
-    // Start encrypting and printing the message.
-    printf("Encrypted message: ");
-    for (i = 0; message[i] != '\0'; i++) {
-        if (message[i] >= 'a' && message[i] <= 'z') {
-            printf("%c", ((message[i] - 'a' + shifter) % 26) + 'a');
-        } else if (message[i] >= 'A' && message[i] <= 'Z') {
-            printf("%c", ((message[i] - 'A' + shifter) % 26) + 'A');
-        } else {
-            printf("%c", message[i]);
-        }
-    }
-}`
-
-This example demonstrates how to apply a simple encryption technique to a string of text. It's a great way to practice working with strings, loops, and conditional statements in C.
-
 ## Contributing
 We welcome contributions from the community! If you have suggestions for additional exercises or improvements to existing ones, please feel free to submit a pull request or open an issue.
 
