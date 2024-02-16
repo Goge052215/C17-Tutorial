@@ -14,7 +14,7 @@ To get started with the tutorials and exercises in this repository, you'll need:
 
 ## How to Use This Repository
 1. **Clone the Repository**: First, clone this repository to your local machine using Git:
-`https://github.com/Goge052215/C1X-Tutorial`
+`[https://github.com/Goge052215/C1X-Tutorial](https://github.com/Goge052215/C17-Tutorial.git)`
 2. **Browse the Exercises**: Navigate through the repository to find exercises and examples. Each file is named to reflect the concept it demonstrates.
 3. **Read the Comments**: Before trying to solve the exercises, read through the comments in each file to understand what is being demonstrated.
 4. **Try It Yourself**: After understanding the example, try to modify the code or solve the exercises on your own.
